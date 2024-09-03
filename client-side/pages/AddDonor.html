@@ -11,7 +11,7 @@
         <div class="text">
             <h2>Add Donor</h2>
         </div>
-        <form action="">
+        <form action="/submit" method="POST">
 
             <div class="input-data">
                 <label for="">Name</label>
@@ -33,11 +33,11 @@
            <div class="gender">
                 <label for="">Gender: </label>
                 <!-- <label for=""></label> -->
-                <input type="radio" name="gender" id="male">Male
+                <input type="radio" name="gender" id="male" value="male">Male
                 <!-- <label for="">Female</label> -->
-                <input type="radio" name="gender" id="female">Female
+                <input type="radio" name="gender" id="female" value="female">Female
                 <!-- <label for="">Other</label> -->
-                <input type="radio" name="gender" id="other">Other
+                <input type="radio" name="gender" id="other" value="other">Other
             </div>
             <input class="submit-btn" type="submit" value="Add Donor" >
 
