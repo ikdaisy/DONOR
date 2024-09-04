@@ -1,6 +1,7 @@
 const http = require ("http")
 const fs = require ("fs")
 const url = require ("url")
+const PORT=3000
 // import querystring module
 const queryString = require("querystring")
 //import the mongodb module 
@@ -8,7 +9,7 @@ const {MongoClient}= require("mongodb")
 // connect the mongodb
 const client=  new MongoClient("mongodb://127.0.0.1:27017/")
 
-const app= http.createServer((req,res)=>{
+const app= http.createServer(async(req,res)=>{
     //create database
     const db = client.db("Donor")
     //create collection
@@ -73,10 +74,30 @@ const app= http.createServer((req,res)=>{
         res.end(fs.readFileSync("../client-side/index.html"))
     }
 
+    //get data from database and send to the frontend
+    if(path.pathname=="/getDonors" && req.method=="GET"){
+        const data= await collection.find().toArray();
+        console.log(data);
+        const jsonData=JSON.stringify(data)
+        console.log(jsonData);
+        res.writeHead(200,{"Content-Type":"text/json"})
+        res.end(jsonData)
+    }
+
     
  
     
      
 })
 
-app.listen(3001);
+client.connect().then(()=>{
+    console.log("Database Connected");
+    app.listen(PORT,()=>{
+        console.log(`http://localhost:${PORT}`);
+        
+    })
+    
+}).catch((error)=>{
+    console.log(error);
+    
+})
