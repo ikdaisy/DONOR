@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
 *{
     padding: 0;
     margin: 0;
@@ -5,27 +9,58 @@
 
 .container{
     width: 100%;
-    height: 100vh;
-    background:linear-gradient(rgb(86, 86, 163),white);
+    /* height: 100vh; */
+    /* background:linear-gradient(rgb(86, 86, 163),white); */
+    /* background-color: rgb(129, 33, 33); */
+    background-color: cornsilk;
+
     display: grid;
     justify-content: center;
     
+}
+
+.nav{
+    width: 100%;
+    height: 8vh;
+    /* background-color: white; */
+    background: linear-gradient( 60deg,rgb(153, 52, 52), rgb(235, 158, 98));
+
+    color:white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav h2{
+    margin-left: 10px;
+    font-size: 35px;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }
 .text{
     padding-top: 10px;
     
     text-align: center;
     font-size: 20px;
-    color: rgb(13, 13, 66);
+    color: rgb(97, 5, 5);
     text-transform: uppercase;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 0.5em;
 
     
 }
 form{
-    background:linear-gradient(rgb(128, 128, 194),white);
-    /* box-shadow: 0px 3px 15px rgba(143, 138, 138, 0.1); */
-    box-shadow: rgba(66, 65, 65, 0.35) 0px 5px 15px;
+    /* background:linear-gradient(rgb(128, 128, 194),white); */
+    /* background: linear-gradient(rgb(163, 37, 37),cornsilk); */
+    /* background: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%); */
+    background: linear-gradient( 60deg,rgb(153, 52, 52), rgb(235, 158, 98));
+   border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     height: 70vh;
+   
     width: 100%;
     padding: 30px 10px;
     /* border: 1px solid rgb(138, 133, 133); */
@@ -34,14 +69,15 @@ form{
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: rgb(12, 12, 99);
+    color: rgb(51, 4, 4);
 }
 input[type="text"]:focus {
     outline: none;
     box-shadow: rgba(66, 65, 65, 0.35) 0px 5px 15px;
     box-sizing: border-box;
   transition: all 0.2s ease-in-out;
-    
+  
+ 
     
   }
 
@@ -74,22 +110,27 @@ input[type="text"]:focus {
 .gender input{
     margin-right: 15px;
     margin-left: 15px;
+    cursor: pointer;
+
 }
 .gender label{
     margin-right: 15px;
 }
 input[type="radio"] {
-    accent-color: rgb(9, 9, 85);
+    accent-color: rgb(104, 16, 16);
   }
 
 
 .submit-btn{
     border: none;
     color: white;
-    background-color: rgb(9, 9, 85);
+    /* background-color: rgb(9, 9, 85); */
+    background-color: rgb(73, 12, 12);
     padding: 10px 10px;
     font-weight: bolder;
     font-size: 15px;
     text-transform: uppercase;
     border-radius: 10px;
+    cursor: pointer;
+
 }
