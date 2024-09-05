@@ -15,6 +15,7 @@ async function fetchData() {
             <input type="text" name="bloodgroup" disabled=true placeholder="BloodGroup" value=${donor.bloodgroup} id="bloodgroup-${donor._id}">
 
             <button class="edit-btn" onclick="handleEdit('${donor._id}')">EDIT</button>
+            <button class="save-btn" >SAVE</button>
             <button class="delete-btn" onclick="handleDelete('${donor._id}')">DELETE</button>
             </div>
         `
