@@ -5,7 +5,7 @@ const PORT=3000
 // import querystring module
 const queryString = require("querystring")
 //import the mongodb module 
-const {MongoClient}= require("mongodb")
+const {MongoClient,ObjectId}= require("mongodb")
 // connect the mongodb
 const client=  new MongoClient("mongodb://127.0.0.1:27017/")
 
@@ -82,6 +82,33 @@ const app= http.createServer(async(req,res)=>{
         console.log(jsonData);
         res.writeHead(200,{"Content-Type":"text/json"})
         res.end(jsonData)
+    }
+
+    //delete 
+    if(path.pathname=="/delete" && req.method=="DELETE"){
+        console.log("You reached the delete route");
+        body=""
+        req.on("data",(chunks)=>{
+            console.log(chunks);
+            body+=chunks.toString();
+            console.log(body);
+        })
+
+        req.on("end",async()=>{
+            let _id = new ObjectId(body);
+            collection.deleteOne({_id}).then(()=>{
+                res.writeHead(200,{"Content-Type":"text/plain"})
+                res.end("Successfully deleted")
+
+            }).catch(()=>{
+                res.writeHead(400,{"Content-Type":"text/plain"})
+                res.end("Failed to delete")
+
+            });
+
+
+        });
+        
     }
 
     
