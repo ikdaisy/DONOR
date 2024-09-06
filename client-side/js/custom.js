@@ -1,6 +1,6 @@
 async function fetchData() {
     const res = await fetch("http://localhost:3000/getDonors")
-    console.log(res);
+    // console.log(res);
     const data =await res.json()
     console.log(data);
     str=``
@@ -15,7 +15,7 @@ async function fetchData() {
             <input type="text" name="bloodgroup" disabled=true placeholder="BloodGroup" value=${donor.bloodgroup} id="bloodgroup-${donor._id}">
 
             <button class="edit-btn" onclick="handleEdit('${donor._id}')">EDIT</button>
-            <button class="save-btn" >SAVE</button>
+            <button class="save-btn"  onclick="handleSave('${donor._id}')" >SAVE</button>
             <button class="delete-btn" onclick="handleDelete('${donor._id}')">DELETE</button>
             </div>
         `
@@ -41,6 +41,37 @@ function handleEdit(id){
 
 // ---------------------------------------------------------------------------------------------------
 
+
+//save function 
+
+async function handleSave(id){
+    // alert(id)
+    let name = document.getElementById(`name-${id}`).value;
+    let gender = document.getElementById(`gender-${id}`).value;
+    let email = document.getElementById(`email-${id}`).value;
+    let phone = document.getElementById(`phone-${id}`).value;
+    let bloodgroup = document.getElementById(`bloodgroup-${id}`).value;
+    
+    console.log(name,gender,email,phone,bloodgroup);
+
+    let objData={id,name,gender,email,phone,bloodgroup};
+    console.log(objData);
+    //convert object into json string
+    const jsonData=JSON.stringify(objData)
+    console.log(jsonData);
+    //send the data with request PUT
+    const res = await fetch("http://localhost:3000/update",{
+        method:"PUT",
+        "Content-Type" :"text/json",
+        body:jsonData
+    })
+    // console.log(res);
+    const message= await res.text()
+    console.log(message);
+    fetchData();
+    
+
+}
 
 //Delete function 
 

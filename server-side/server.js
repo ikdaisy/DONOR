@@ -84,6 +84,38 @@ const app= http.createServer(async(req,res)=>{
         res.end(jsonData)
     }
 
+    //Save
+    if(path.pathname=="/update" && req.method=="PUT"){
+        console.log("Update route reached");
+        let body=""
+        req.on("data",(chunks)=>{
+            console.log(chunks);
+            body+=chunks.toString()
+            console.log(body);
+        });
+        req.on("end",async()=>{
+            let udata = JSON.parse(body)
+            console.log(udata);
+            const _id=new ObjectId(udata.id)
+            console.log(_id);
+            const updateData={name:udata.name,email:udata.email,phone:udata.phone,bloodgroup:udata.bloodgroup,gender:udata.gender};
+            await collection.updateOne({_id},{$set:updateData})
+            .then(()=>{
+                res.writeHead(200,{"Content-Type":"text/plain"})
+                res.end("Updated Successfully")
+                
+                
+            }).catch(()=>{
+                res.writeHead(404,{"Content-Type":"text/plain"})
+                res.end("Failed to update")
+            })   
+        })
+        
+    }
+
+
+
+
     //delete 
     if(path.pathname=="/delete" && req.method=="DELETE"){
         console.log("You reached the delete route");
