@@ -30,7 +30,27 @@
     font-family: "Pixelify Sans", sans-serif;
 }
 
+.search{
+    background-color: white;
+    border: 1px solid rgb(88, 7, 7);
+    color: rgb(102, 12, 12);
+    width: 300px;
+    height: 30px;
+    text-align: left;
+}
 
+input[type="search"]::placeholder {
+    color: rgb(121, 10, 10);
+    font-style: italic;
+    font-size: 13px;
+    padding-left: 6px;
+  }
+
+  input[type="search"]:focus {
+    outline: none;
+    box-shadow: rgba(66, 65, 65, 0.35) 0px 5px 15px;
+    transition: all 0.2s ease-in-out;
+  }
 
 .main{
     margin-top: 50px;
@@ -39,6 +59,7 @@
     /* background-color: blue; */
     width: 100%;
 }
+
 input{
     border-radius: 8px;
     padding: 5px 2px;
@@ -53,7 +74,6 @@ input{
    font-weight: bold;
     margin-top: 5px;
     box-shadow: rgba(66, 65, 65, 0.35) 0px 5px 15px;
-
 }
 
 input[type="text"]:focus {

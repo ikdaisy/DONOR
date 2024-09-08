@@ -26,6 +26,43 @@ async function fetchData() {
 
 fetchData()
 
+
+//FILTER aka Search code
+
+
+document.getElementById("search").addEventListener("keyup",async(e)=>{
+    try{
+        const res=await fetch("http://localhost:3000/getDonors")
+        const data=await res.json()
+        const search =data.filter((donor)=>donor.name.toLowerCase().startsWith(e.target.value.toLowerCase()))
+        console.log(data);
+        console.log(search);
+        
+        str=``
+        search.map((donor)=>{
+          str+=` 
+          <div> <input type="text" name="name" disabled=true placeholder="Name" value=${donor.name} id="name-${donor._id}">
+            <input type="text" name="gender" disabled=true placeholder="Gender" value=${donor.gender} id="gender-${donor._id}">
+
+            <input type="text" name="email" disabled=true placeholder="Email" value=${donor.email} id="email-${donor._id}">
+            <input type="text" name="phone" disabled=true placeholder="Phone Number" value=${donor.phone} id="phone-${donor._id}">
+            <input type="text" name="bloodgroup" disabled=true placeholder="BloodGroup" value=${donor.bloodgroup} id="bloodgroup-${donor._id}">
+
+            <button class="edit-btn" onclick="handleEdit('${donor._id}')">EDIT</button>
+            <button class="save-btn"  onclick="handleSave('${donor._id}')" >SAVE</button>
+            <button class="delete-btn" onclick="handleDelete('${donor._id}')">DELETE</button>
+            </div>
+          `
+
+        })
+        document.getElementById("main").innerHTML=str
+    }
+   
+    catch(error){
+        console.log(error);
+   }
+});
+
 // ------------------------------------------------------------------------------------------
 // Edit Function 
 
